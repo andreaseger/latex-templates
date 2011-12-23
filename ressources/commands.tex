@@ -1,0 +1,37 @@
+﻿%commands
+% Eigene Befehle und typographische Auszeichnungen für diese
+
+
+% Abkürzungen mit korrektem Leerraum 
+\newcommand{\ua}{\mbox{u.\,a.}\xspace}
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+\newcommand{\zb}{\mbox{z.\,B.}\xspace}
+\newcommand{\Zb}{\mbox{Z.\,B.}\xspace}
+\newcommand{\dahe}{\mbox{d.\,h.}\xspace}
+\newcommand{\Vgl}{Vgl.\xspace}
+\newcommand{\bzw}{bzw.\xspace}
+\newcommand{\evtl}{evtl.\xspace}
+
+\newcommand{\abbildung}[1]{Abbildung~\ref{fig:#1}\xspace}
+
+% zum Ausgeben von Autoren
+\newcommand{\AutorName}[1]{\textsc{#1}}
+\newcommand{\Autor}[1]{\AutorName{\citeauthor{#1}}}
+
+
+\newcommand{\TDD}{\ac{tdd}\xspace}
+\newcommand{\BDD}{\ac{bdd}\xspace}
+
+\newcommand{\todo}[1]{
+  \ifdraft{\marginpar{\textcolor{red}{\texttt{ #1}}}}
+  {}
+}
+
+\newcommand{\footurl}[1]{\footnote{\url{#1}}}
+
+%manuelle Trennung
+%\hyphenation{update-\_multiple}
+
+%% better: (general command to vertically center horizontal material)
+\newcommand*{\vcenteredhbox}[1]{\begingroup\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+\newcommand*{\vcenteredvbox}[1]{\begingroup\setbox0=\vbox{#1}\parbox{\wd0}{\box0}\endgroup}

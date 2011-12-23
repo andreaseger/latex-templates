@@ -1,0 +1,11 @@
+*.aux
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.out
+*.snm
+*.tcp
+*.toc
+*.log
+*.blg
+/paper.lof

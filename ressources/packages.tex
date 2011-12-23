@@ -1,0 +1,183 @@
+﻿% Packages
+
+% Deutsche Anpassungen
+\usepackage{babel}
+\usepackage{scrhack}
+\usepackage{ifdraft}
+
+% Schrift
+
+\input{ressources/fontConfig}
+% 1,5 facher Zeilenabstand in draft
+\ifdraft{
+\usepackage[onehalfspacing]{setspace}
+}{
+\usepackage{setspace}
+}
+
+%dictum
+\renewcommand{\dictumwidth}{.5\textwidth}
+
+% bessere typography
+%\usepackage[protrusion=true, expansion=true, final]{microtype}
+
+%dynamic space
+\usepackage{xspace}
+
+% Grafiken
+\usepackage{graphicx}
+%\usepackage{epstopdf}
+\graphicspath{{img/}}
+\usepackage{framed}
+
+%wasserzeichen
+\usepackage{eso-pic}
+\makeatletter
+\newcommand\BackgroundPicture[3]{%
+	\setlength{\unitlength}{1pt}%
+	\put(0,\strip@pt\paperheight){%
+		\parbox[t][\paperheight]{\paperwidth}{%
+			\vfill
+			\centering\includegraphics[width=#2,angle=#3]{#1}
+			\vfill
+		}
+	}
+} %
+\makeatother
+
+
+
+
+% Zum einbinden der Titelseite
+\usepackage{pdfpages}
+
+%% Glossar
+\usepackage[printonlyused, nohyperlinks]{acronym}
+\def\bflabel#1{{\textbf{#1}\dotfill}}
+
+% zum Einbinden von Programmcode -----------------------------------------------
+\usepackage[final]{listings}
+\usepackage{xcolor}
+%\definecolor{lightgrey}{RGB}{216,220,214}
+
+\ifdraft{
+\definecolor{colKeys}{rgb}{0,0,0}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{0,0,0}
+\definecolor{colString}{rgb}{0,0,0}
+\definecolor{colConstant}{RGB}{0,0,0}
+}{
+\definecolor{colKeys}{RGB}{225,119,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{RGB}{83,92,103}
+\definecolor{colString}{rgb}{0,0.5,0}
+\definecolor{colConstant}{RGB}{190,1,25}
+}
+
+
+\lstnewenvironment{ruby}[1][]
+{\lstset{
+    basicstyle=\ttfamily\color{black}\scriptsize,
+    identifierstyle=\color{colIdentifier},
+    keywordstyle=\color{colKeys}\bfseries,
+    stringstyle=\color{colString},
+    commentstyle=\color{colComments},
+    columns=fixed,
+    tabsize=2,
+    frame=none,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakautoindent=true,
+		language=Ruby,
+		morekeywords={test, require, it},
+		morestring=[b]/,
+		emph={Given, And, When, Then},
+		emphstyle=\color{colConstant}\bfseries,
+		#1}}
+{}
+
+\lstdefinelanguage{Cucumber}{
+	morekeywords={Szenario, Funktionalität, Angenommen, Und, Wenn, Dann, Scenario, Feature, Given, And, When, Then},
+	morecomment=[l]{\#},
+	morestring=[b]"
+%	morestring=[b]'
+}
+
+\lstnewenvironment{cucumber}[1][]
+{\lstset{
+    basicstyle=\ttfamily\color{black}\scriptsize,
+    identifierstyle=\color{colIdentifier},
+    keywordstyle=\color{colKeys}\bfseries,
+    stringstyle=\color{colString},
+    commentstyle=\color{colComments},
+    columns=fixed,
+    tabsize=2,
+    frame=none,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakautoindent=true,
+		language=Cucumber,
+		#1}
+}{}
+
+% Bibliographiestil
+\usepackage{natbib}
+
+% urls
+\usepackage[hyphens]{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\footnotesize\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+
+% Querverweise
+\usepackage[
+    plainpages=false,
+    unicode=true,          % non-Latin characters in Acrobat?s bookmarks
+    pdftoolbar=true,        % show Acrobat?s toolbar?
+    pdfmenubar=true,        % show Acrobat?s menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview={FitV},    % fits the width of the page to the window
+    pdftitle={\titel},    % title
+    pdfauthor={\autor},     % author
+    pdfsubject={\art},   % subject of the document
+    pdfkeywords={\titel, \untertitel}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,          % color of external links
+    hyperfootnotes=false,
+ 							]{hyperref}
+\usepackage[all]{hypcap}
+
+
+% Kopf und Fußzeile
+\usepackage[automark]{scrpage2}
+\clearscrheadings
+%\clearscrplain
+%\clearscrheadfoot
+
+\setkomafont{pageheadfoot}{\small\sffamily}
+\setkomafont{pagenumber}{\normalfont\normalsize}
+\chead{\headmark} % Oben innen: Setzt Kapitel
+\cfoot{} % Mitte unten: Seitenzahlen bei plain
+\ofoot{\pagemark}
+\ifoot{\autor}
+\pagestyle{scrheadings}
+
+%\usepackage{chapterthumb}
+%\renewcommand*{\chapterthumbskip}{.16\paperheight}%
