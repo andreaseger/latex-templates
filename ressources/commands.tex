@@ -35,3 +35,59 @@
 %% better: (general command to vertically center horizontal material)
 \newcommand*{\vcenteredhbox}[1]{\begingroup\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
 \newcommand*{\vcenteredvbox}[1]{\begingroup\setbox0=\vbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+\newcommand*{\lsttt}[1]{\lstinline[basicstyle=\ttfamily\color{black}\footnotesize, columns=fixed]!#1!}
+\newcommand*{\smalltexttt}[1]{{\ttfamily\footnotesize #1} }
+
+\lstnewenvironment{ruby}[1][]
+{\lstset{
+    basicstyle=\ttfamily\color{black}\scriptsize,
+    identifierstyle=\color{colIdentifier},
+    keywordstyle=\color{colKeys}\bfseries,
+    stringstyle=\color{colString},
+    commentstyle=\color{colComments},
+    columns=fixed,
+    tabsize=2,
+    frame=none,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakautoindent=true,
+    language=Ruby,
+    morekeywords={test, require, it},
+    morestring=[b]/,
+    emph={Given, And, When, Then},
+    emphstyle=\color{colConstant}\bfseries,
+    #1}}
+{}
+
+\lstdefinelanguage{Cucumber}{
+    morekeywords={Szenario, Funktionalität, Angenommen, Und, Wenn, Dann, Scenario, Feature, Given, And, When, Then},
+    morecomment=[l]{\#},
+    morestring=[b]"
+%   morestring=[b]'
+}
+
+\lstnewenvironment{cucumber}[1][]
+{\lstset{
+    basicstyle=\ttfamily\color{black}\scriptsize,
+    identifierstyle=\color{colIdentifier},
+    keywordstyle=\color{colKeys}\bfseries,
+    stringstyle=\color{colString},
+    commentstyle=\color{colComments},
+    columns=fixed,
+    tabsize=2,
+    frame=none,
+    extendedchars=true,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    numberstyle=\tiny,
+    breaklines=true,
+    breakautoindent=true,
+        language=Cucumber,
+        #1}
+}{}
