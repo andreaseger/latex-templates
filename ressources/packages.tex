@@ -1,13 +1,13 @@
-﻿% Packages
+% Packages
 
 % Deutsche Anpassungen
 \usepackage{babel}
 \usepackage{scrhack}
+
+
 \usepackage{ifdraft}
+\usepackage{iftex}
 
-% Schrift
-
-\input{ressources/fontConfig}
 % 1,5 facher Zeilenabstand in draft
 \ifdraft{
 \usepackage[onehalfspacing]{setspace}
@@ -18,8 +18,8 @@
 %dictum
 \renewcommand{\dictumwidth}{.5\textwidth}
 
-% bessere typography
-%\usepackage[protrusion=true, expansion=true, final]{microtype}
+% Schrift
+\input{ressources/fontConfig}
 
 %dynamic space
 \usepackage{xspace}
@@ -45,10 +45,8 @@
 } %
 \makeatother
 
-
-
-% Zum einbinden der Titelseite
-\usepackage{pdfpages}
+% Zum einbinden von pdf seiten
+%\usepackage{pdfpages}
 
 %% Glossar
 \usepackage[printonlyused, nohyperlinks]{acronym}
@@ -111,7 +109,7 @@
 \usepackage[all]{hypcap}
 
 
-% Kopf und Fußzeile
+% Kopf und Fu�zeile
 \usepackage[automark]{scrpage2}
 \clearscrheadings
 %\clearscrplain

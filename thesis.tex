@@ -4,11 +4,11 @@ a4paper,							% alle weiteren Papierformat einstellbar
 10pt,									% Schriftgröße (12pt, 11pt (Standard))
 ngerman,
 BCOR=1mm,						% Bindekorrektur, bspw. 1 cm
-DIV=14,								% 83 Zeichen
-%DIV=calc,						  % 76 Zeichen; führt die Satzspiegelberechnung neu aus
+%DIV=14,								% 83 Zeichen
+DIV=calc,						  % 76 Zeichen; führt die Satzspiegelberechnung neu aus
 %											  s. scrguide 2.4
 oneside,							% einseitiges Layout
-%headings=openright,   % Kapitel können auch auf linken Seiten beginnen
+headings=openright,   % Kapitel können auch auf linken Seiten beginnen
 %twocolumn,						% zweispaltiger Satz
 %parskip=half*,				% Absatzformatierung s. scrguide 3.1
 %headsepline,					% Trennline zum Seitenkopf	
@@ -19,13 +19,13 @@ oneside,							% einseitiges Layout
 %headings=normal,			% Überschriften etwas kleiner (smallheadings)
 %index=totoc,					% Index im Inhaltsverzeichnis
 listof=totoc,					% Abb.- und Tab.verzeichnis im Inhalt
-%bibliography=totoc,		% Literaturverzeichnis im Inhalt
+bibliography=totoc,		% Literaturverzeichnis im Inhalt
 %leqno,								% Nummerierung von Gleichungen links
 %fleqn,								% Ausgabe von Gleichungen linksbündig
 draft								  % überlangen Zeilen in Ausgabe gekennzeichnet
 %final
 ]
-{scrartcl}
+{scrbook}
 
 
 \input{ressources/meta}
@@ -48,9 +48,8 @@ draft								  % überlangen Zeilen in Ausgabe gekennzeichnet
 \begin{spacing}{1}
   \include{ressources/title}
 \end{spacing}
-\KOMAoptions{DIV=7}
-%\includepdf{img/title.pdf}
-%\include{inhalt/abstract}
+\KOMAoptions{DIV=last}
+\include{inhalt/abstract}
 \ofoot{\pagemark}
 % Seitennummerierung -----------------------------------------------------------
 %   Vor dem Hauptteil werden die Seiten in großen römischen Ziffern 
@@ -63,14 +62,13 @@ draft								  % überlangen Zeilen in Ausgabe gekennzeichnet
 	\tableofcontents % Inhaltsverzeichnis
   %\KOMAoptions{headings=openany}
 	\listoffigures % Abbildungsverzeichnis
-	%\include{inhalt/glossar} % Abkürzungsverzeichnis
+	\include{inhalt/glossar} % Abkürzungsverzeichnis
 \end{spacing}
 
 % arabische Seitenzahlen im Hauptteil ------------------------------------------
-%\KOMAoptions{headings=openright}
 \cleardoublepage
 \pagenumbering{arabic}
-\setcounter{page}{3} % Seitenzahl bis zum eigentlichen Inhalt korrigieren
+\setcounter{page}{7} % Seitenzahl bis zum eigentlichen Inhalt korrigieren
 
 % %chapter thumbs einschalten
 %\ifdraft{}{\lohead[\putchapterthumb]{\putchapterthumb}}
@@ -84,9 +82,9 @@ draft								  % überlangen Zeilen in Ausgabe gekennzeichnet
 \cleardoublepage
 \bibliographystyle{natdin}
 \bibliography{bibliography}	% Sie benötigen einen *.bib-Datei
-  
-% \begin{spacing}{1}
-%   \include{ressources/erklaerung} % Selbständigkeitserklärung
-% \end{spacing}
+
+\begin{spacing}{1}
+  \include{ressources/erklaerung} % Selbständigkeitserklärung
+\end{spacing}
 
 \end{document}

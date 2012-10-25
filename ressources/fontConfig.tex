@@ -1,15 +1,32 @@
-﻿\usepackage{fontspec}
-\usepackage{xunicode}
-\usepackage{xltxtra}
-\setmainfont{Minion Pro}
-\setsansfont{Myriad Pro}
-\setmonofont{Consolas}
+% Font
+\ifXeTeX
+  \usepackage{fontspec}
+  \usepackage{xunicode}
+  \usepackage{xltxtra}
+  \setmainfont{Minion Pro}
+  \setsansfont{Myriad Pro}
+  \setmonofont{Consolas}
+\else
+  \ifLuaTex
+    \usemodel[simplefonts]
+    \setmainfont[Minion Pro] % set Delicious as main (serif) font
+    \setmonofont[Consolas]
+    \setmathfont[mymathfont]
+    \setsansfont[Myriad Pro]
+    \enabletrackers[fonts.missing]
+  \else% pdftex
+    \usepackage[T1]{fontenc}
+    % \usepackage[garamond]{mathdesign}
+    % \usepackage[scaled]{helvet}
+    % \usepackage{MinionPro}
+    % \renewcommand{\sfdefault}{Myriad-LF}
+    % \usepackage[scaled]{beramono}
+  \fi
+\fi
 
-
-% %\usepackage[utf8]{inputenc}
-% \usepackage[T1]{fontenc}
-% %\usepackage[garamond]{mathdesign}
-% %\usepackage[scaled]{helvet}
-% \usepackage{MinionPro}
-% \renewcommand{\sfdefault}{Myriad-LF}
-% \usepackage[scaled]{beramono}
+% bessere typography
+\ifXeTex
+  \usepackage{microtype}
+\else
+  \usepackage[protrusion=true, expansion=true, final]{microtype}
+\fi
