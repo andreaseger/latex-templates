@@ -7,11 +7,11 @@
   \setsansfont{Myriad Pro}
   \setmonofont{Consolas}
 \else
-  \ifLuaTex
+  \ifLuaTeX
     \usemodel[simplefonts]
-    \setmainfont[Minion Pro] % set Delicious as main (serif) font
+    \setmainfont[Minion Pro]
     \setmonofont[Consolas]
-    \setmathfont[mymathfont]
+%    \setmathfont[mymathfont]
     \setsansfont[Myriad Pro]
     \enabletrackers[fonts.missing]
   \else% pdftex
@@ -25,7 +25,7 @@
 \fi
 
 % bessere typography
-\ifXeTex
+\ifXeTeX
   \usepackage{microtype}
 \else
   \usepackage[protrusion=true, expansion=true, final]{microtype}

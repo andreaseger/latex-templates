@@ -1,6 +1,7 @@
 *.aux
 *.fdb_latexmk
 *.synctex.gz
+*.synctex
 *.nav
 *.out
 *.snm
@@ -8,4 +9,4 @@
 *.toc
 *.log
 *.blg
-/paper.lof
+*.lof
